@@ -106,10 +106,9 @@ class TodoList {
   };
 
   extractTodos() {
-    this.todos =
-      this.storage
-        .getData(TODOS_DATA_KEY)
-        .map((todoData) => new Todo(todoData)) || [];
+    this.todos = (this.storage.getData(TODOS_DATA_KEY) || []).map(
+      (todoData) => new Todo(todoData)
+    );
   }
 
   saveTodos() {
