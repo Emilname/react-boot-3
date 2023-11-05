@@ -101,3 +101,10 @@ button {
     }
   }
 }
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  gap: 10px;
+}

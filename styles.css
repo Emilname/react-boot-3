@@ -241,4 +241,11 @@ button {
 }
 .tab-panels .tab-panel:not([data-active]) {
   display: none;
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  gap: 10px;
 }/*# sourceMappingURL=styles.css.map */

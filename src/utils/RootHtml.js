@@ -25,17 +25,20 @@ class RootHtml {
   get tabsContainer() {
     return $(".tabs");
   }
-
   get tabPanelsContainer() {
     return $(".tab-panels");
   }
-
   get tabs() {
     return $.all(".tab", this.tabsContainer);
   }
-
   get tabPanels() {
     return $.all(".tab-panel", this.tabPanelsContainer);
+  }
+  get profileForm() {
+    return $(".profile-form");
+  }
+  get profileFormInputs() {
+    return $.all("input, select", this.profileForm);
   }
 }
 

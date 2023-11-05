@@ -11,8 +11,8 @@
     <div class="container">
       <div class="content">
         <div class="tabs">
-          <div class="tab" data-tabkey="1" data-active="1">Todos</div>
-          <div class="tab" data-tabkey="2">Profile</div>
+          <div class="tab" data-tabkey="1">Todos</div>
+          <div class="tab" data-tabkey="2" data-active="1">Profile</div>
         </div>
         <div class="tab-panels">
           <div class="tab-panel" data-tabkey="1" data-active="1">
@@ -47,7 +47,71 @@
             </div>
           </div>
           <div class="tab-panel" data-tabkey="2">
-            <div id="profile-form" class="profile-form"></div>
+            <form id="profile-form" class="profile-form">
+              <input
+                type="text"
+                name="name"
+                placeholder="Имя"
+                value="test"
+                required
+              />
+              <input type="text" name="surname" placeholder="Фамилия" />
+              <input type="text" name="patronymic" placeholder="Отчество" />
+              <input
+                type="date"
+                name="birthdayDate"
+                placeholder="Дата рождения"
+                min="1900-01-01"
+                max="2099-12-31"
+              />
+              <select type="date" name="citizenship">
+                <option hidden disabled selected value>Гражданство</option>
+                <option value="ru">Россия</option>
+                <option value="kz">Казахстан</option>
+                <option value="ua">Украина</option>
+                <option value="uz">Узбекистан</option>
+              </select>
+              <input
+                type="tel"
+                name="phone"
+                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                placeholder="999-999-9999"
+                value="999-999-9999"
+                required
+              />
+              Ваш пол:
+              <label>
+                Женский
+                <input
+                  type="radio"
+                  name="gender"
+                  value="male"
+                  required
+                  checked
+                />
+              </label>
+              <label>
+                Мужской
+                <input type="radio" name="gender" value="female" required />
+              </label>
+              <label
+                >Любимый цвет<input type="color" name="color" value="#ff0000"
+              /></label>
+              <label>
+                Принимаю политику конфиденциальности
+                <input
+                  type="checkbox"
+                  name="confidentiality"
+                  required
+                  checked
+                />
+              </label>
+              <label>
+                Согласен с обработкой персональных данных
+                <input type="checkbox" name="processing" required checked />
+              </label>
+              <button type="submit">Сохранить</button>
+            </form>
           </div>
         </div>
       </div>

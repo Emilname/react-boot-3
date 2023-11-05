@@ -34,7 +34,6 @@ class Tabs {
 
   chageTabPanel = (tabKey) => {
     [...this.tabPanels].forEach((tabPanel) => {
-      console.log(tabPanel, tabPanel.dataset.tabkey);
       if (tabKey !== tabPanel.dataset.tabkey) {
         delete tabPanel.dataset.active;
       } else {
