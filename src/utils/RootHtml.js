@@ -1,26 +1,41 @@
 import $ from "./$.js";
 
 class RootHtml {
-  static get sortByDoneButton() {
+  get sortByDoneButton() {
     return $(".todo__sort-button.done");
   }
-  static get sortByTimeButton() {
+  get sortByTimeButton() {
     return $(".todo__sort-button.time");
   }
-  static get todoTextInput() {
+  get todoTextInput() {
     return $(".todo__text-input");
   }
-  static get todoTimeInput() {
+  get todoTimeInput() {
     return $(".todo__time-input");
   }
-  static get todoListContainer() {
+  get todoListContainer() {
     return $(".todo__list");
   }
-  static get todoForm() {
+  get todoForm() {
     return $(".todo__form");
   }
-  static get timeSum() {
+  get timeSum() {
     return $(".todo__time-sum");
+  }
+  get tabsContainer() {
+    return $(".tabs");
+  }
+
+  get tabPanelsContainer() {
+    return $(".tab-panels");
+  }
+
+  get tabs() {
+    return $.all(".tab", this.tabsContainer);
+  }
+
+  get tabPanels() {
+    return $.all(".tab-panel", this.tabPanelsContainer);
   }
 }
 

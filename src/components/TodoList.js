@@ -1,13 +1,13 @@
 import Todo from "./Todo.js";
-import RootHtml from "../utils/RootHtml.js";
 
 const TODOS_DATA_KEY = "todo";
 
 class TodoList {
-  constructor(storage, sorter) {
+  constructor(storage, sorter, root) {
     this.storage = storage;
     this.extractTodos();
     this.sorter = sorter;
+    this.root = root;
   }
 
   init = () => {
@@ -18,13 +18,13 @@ class TodoList {
   };
 
   addDoneSortListener = () => {
-    RootHtml.sortByDoneButton.addEventListener("click", () => {
+    this.root.sortByDoneButton.addEventListener("click", () => {
       this.sortByField("done");
     });
   };
 
   addTimeSortListener = () => {
-    RootHtml.sortByTimeButton.addEventListener("click", () => {
+    this.root.sortByTimeButton.addEventListener("click", () => {
       this.sortByField("time");
     });
   };
@@ -35,10 +35,10 @@ class TodoList {
   };
 
   addSubmitListener = () => {
-    RootHtml.todoForm.addEventListener("submit", (event) => {
+    this.root.todoForm.addEventListener("submit", (event) => {
       event.preventDefault();
-      const todoText = RootHtml.todoTextInput.value;
-      const todoTime = RootHtml.todoTimeInput.value;
+      const todoText = this.root.todoTextInput.value;
+      const todoTime = this.root.todoTimeInput.value;
       const trimmedText = todoText.trim();
 
       const todo = new Todo({
@@ -50,9 +50,9 @@ class TodoList {
         this.todos.push(todo);
         this.saveTodos();
 
-        RootHtml.todoTextInput.value = "";
-        RootHtml.todoTimeInput.value = "";
-        RootHtml.todoTextInput.focus();
+        this.root.todoTextInput.value = "";
+        this.root.todoTimeInput.value = "";
+        this.root.todoTextInput.focus();
       }
 
       this.render();
@@ -60,12 +60,12 @@ class TodoList {
   };
 
   render = () => {
-    RootHtml.todoListContainer.innerHTML = "";
+    this.root.todoListContainer.innerHTML = "";
 
     this.todos.forEach((todo) => {
       const todoElement = todo.render();
       todoElement.addEventListener("click", this.todoItemListener);
-      RootHtml.todoListContainer.appendChild(todoElement);
+      this.root.todoListContainer.appendChild(todoElement);
     });
 
     const timeSumNonCompletedTodos = this.todos.reduce(function (
@@ -81,7 +81,7 @@ class TodoList {
     },
     0);
 
-    RootHtml.timeSum.textContent = timeSumNonCompletedTodos;
+    this.root.timeSum.textContent = timeSumNonCompletedTodos;
   };
 
   todoItemListener = (event) => {
@@ -95,25 +95,25 @@ class TodoList {
       this.todos = this.todos.filter((todo) => {
         return todo.id !== Number(parentNodeId);
       });
-
-      this.render();
     } else if (isDoneButton) {
       this.todos.forEach((todo) => {
         if (todo.id === Number(parentNodeId)) {
           todo.done = !todo.done;
         }
       });
-
-      this.render();
     }
+    this.render();
   };
 
   extractTodos() {
-    this.todos = this.storage.getData(TODOS_DATA_KEY) || [];
+    this.todos =
+      this.storage
+        .getData(TODOS_DATA_KEY)
+        .map((todoData) => new Todo(todoData)) || [];
   }
 
   saveTodos() {
-    this.storage.setData(this.todos);
+    this.storage.setData(TODOS_DATA_KEY, this.todos);
   }
 }
 
