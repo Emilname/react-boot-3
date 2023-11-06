@@ -48,13 +48,7 @@
           </div>
           <div class="tab-panel" data-tabkey="2">
             <form id="profile-form" class="profile-form">
-              <input
-                type="text"
-                name="name"
-                placeholder="Имя"
-                value="test"
-                required
-              />
+              <input type="text" name="name" placeholder="Имя" required />
               <input type="text" name="surname" placeholder="Фамилия" />
               <input type="text" name="patronymic" placeholder="Отчество" />
               <input
@@ -76,19 +70,12 @@
                 name="phone"
                 pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                 placeholder="999-999-9999"
-                value="999-999-9999"
                 required
               />
               Ваш пол:
               <label>
                 Женский
-                <input
-                  type="radio"
-                  name="gender"
-                  value="male"
-                  required
-                  checked
-                />
+                <input type="radio" name="gender" value="male" required />
               </label>
               <label>
                 Мужской
@@ -99,16 +86,11 @@
               /></label>
               <label>
                 Принимаю политику конфиденциальности
-                <input
-                  type="checkbox"
-                  name="confidentiality"
-                  required
-                  checked
-                />
+                <input type="checkbox" name="confidentiality" required />
               </label>
               <label>
                 Согласен с обработкой персональных данных
-                <input type="checkbox" name="processing" required checked />
+                <input type="checkbox" name="processing" required />
               </label>
               <button type="submit">Сохранить</button>
             </form>
