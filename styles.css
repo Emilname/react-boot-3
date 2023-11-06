@@ -168,9 +168,6 @@ body {
   width: 100%;
   max-width: 520px;
   padding: 20px;
-  background-color: azure;
-  border: 1px solid;
-  border-radius: 4px;
 }
 
 .todo__title {
@@ -207,4 +204,48 @@ button {
 }
 .flex .todo__sort-button:first-child {
   margin-right: 20px;
+}
+
+.tabs {
+  display: flex;
+  margin-bottom: -1px;
+  z-index: 1;
+  position: relative;
+}
+.tabs :nth-last-child(1) {
+  border-top-right-radius: 5px;
+}
+.tabs :nth-child(1) {
+  border-top-left-radius: 5px;
+}
+.tabs :nth-child(n+2) {
+  margin-left: -1px;
+}
+
+.tab {
+  background-color: white;
+  padding: 10px;
+  border: 1px solid black;
+}
+.tab[data-active] {
+  background-color: azure;
+  border-bottom: none;
+}
+
+.tab-panels {
+  background-color: azure;
+  border: 1px solid;
+  border-radius: 4px;
+  min-width: 100px;
+  min-height: 100px;
+}
+.tab-panels .tab-panel:not([data-active]) {
+  display: none;
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  gap: 10px;
 }/*# sourceMappingURL=styles.css.map */
